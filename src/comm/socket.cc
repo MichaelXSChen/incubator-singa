@@ -94,8 +94,8 @@ int Router::Bind(const std::string& endpoint) {
 #ifdef USE_ZMQ
     router_ = zsock_new(ZMQ_ROUTER);
     CHECK_NOTNULL(router_);
-    port = zsock_bind(router_, "%s", endpoint.c_str());
-    CHECK_NE(port, -1) << endpoint;
+    port = zsock_bind(router_, "%s", endpoint.c_str()); //THIS FUNCTION FAILED/
+    CHECK_NE(port, -1) << endpoint; 
     LOG(INFO) << "bind successfully to " << zsock_endpoint(router_);
     poller_ = zpoller_new(router_);
 #else
